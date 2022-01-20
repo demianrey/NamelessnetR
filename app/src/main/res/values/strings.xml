@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">NamelessnetR</string>
+    <string name="title_home">home</string>
+    <string name="title_stats">stats</string>
+    <string name="title_logs">logs</string>
+    <string name="title_settin">settings</string>
+</resources>

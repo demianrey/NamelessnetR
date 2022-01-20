@@ -5,10 +5,15 @@ I have decided to rewrite NamelessnetR with contribuation support from other mem
 # Supports 
 
   . VMESS
+  
   . VLESS
+  
   . SHADOWSOCKS
+  
   . SOCKS
+  
   . PSIPHON 
+  
   . SLOW V2RAY DNS 
   
  AND THREE MORE 
@@ -16,5 +21,6 @@ I have decided to rewrite NamelessnetR with contribuation support from other mem
 # Task 
 
  . v2ray-core ("NamelessnetLibV")
+ 
  . Xray-core  ("NamelessnetLibX")
  

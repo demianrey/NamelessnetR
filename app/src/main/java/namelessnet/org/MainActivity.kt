@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home,
                 R.id.navigation_stats,
                 R.id.navigation_logs,
-                R.id.sector_Fragment,
+                R.id.navigation_sector,
                 R.id.navigation_settin
             )
         )

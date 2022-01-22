@@ -64,11 +64,13 @@
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:src="@drawable/ic_v_idle"
+            android:src="@drawable/ic_round_start"
             android:clickable="true"
             android:focusable="true"
             app:layout_anchorGravity="bottom|right|end"
-            android:nextFocusLeft="@+id/recycler_view" />
+            android:nextFocusLeft="@+id/recycler_view"
+            android:contentDescription="start services/stop service"
+            tools:ignore="HardcodedText" />
 
     </com.github.jorgecastilloprz.FABProgressCircle>
 </RelativeLayout>

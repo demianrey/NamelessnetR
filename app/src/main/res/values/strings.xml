@@ -3,5 +3,6 @@
     <string name="title_home">home</string>
     <string name="title_stats">stats</string>
     <string name="title_logs">logs</string>
+    <string name="title_sector">sector</string>
     <string name="title_settin">settings</string>
 </resources>

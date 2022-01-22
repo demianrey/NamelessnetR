@@ -3,12 +3,28 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1287162162162162" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable-v24/ic_more_vert.xml" value="0.1287162162162162" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable-v24/popup_background.xml" value="0.1287162162162162" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable-v24/rect_selector.xml" value="0.1287162162162162" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable-v24/round_selector_mask.xml" value="0.1287162162162162" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable-v24/rounded_drawable.xml" value="0.1287162162162162" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable-v24/slider_thumb.xml" value="0.1287162162162162" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable/home_round.xml" value="0.1" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1287162162162162" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable/ic_round_chart.xml" value="0.1287162162162162" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable/ic_round_home.xml" value="0.1" />
-        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable/ic_round_logs.xml" value="0.1" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable/ic_round_sector.xml" value="0.1287162162162162" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable/ic_round_setting.xml" value="0.1287162162162162" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable/ic_round_start.xml" value="0.1287162162162162" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable/splash.xml" value="0.1" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/card_layout.xml" value="0.15" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/fragment_home.xml" value="0.14" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/fragment_logs.xml" value="0.1" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/layout_toolbar.xml" value="0.1" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/sector_fragment.xml" value="0.1" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/settin_fragment.xml" value="0.1" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/menu/bottom_nav_menu.xml" value="0.18229166666666666" />
       </map>

@@ -24,6 +24,12 @@
         tools:layout="@layout/fragment_logs" />
 
     <fragment
+        android:id="@+id/navigation_sector"
+        android:name="namelessnet.org.ui.sector.SectorFragment"
+        android:label="sector"
+        tools:layout="@layout/sector_fragment" />
+
+    <fragment
         android:id="@+id/navigation_settin"
         android:name="namelessnet.org.ui.settin.SettinFragment"
         android:label="@string/title_settin"

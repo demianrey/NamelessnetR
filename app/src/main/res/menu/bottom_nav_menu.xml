@@ -17,6 +17,11 @@
         android:title="@string/title_logs" />
 
     <item
+        android:id="@+id/navigation_sector"
+        android:icon="@drawable/ic_round_chart"
+        android:title="@string/title_sector" />
+
+    <item
         android:id="@+id/navigation_settin"
         android:icon="@drawable/ic_round_setting"
         android:title="@string/title_settin" />

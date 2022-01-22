@@ -24,11 +24,21 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_stats, R.id.navigation_logs, R.id.navigation_settin
+                R.id.navigation_home,
+                R.id.navigation_stats,
+                R.id.navigation_logs,
+                R.id.sector_Fragment,
+                R.id.navigation_settin
             )
         )
         setSupportActionBar(findViewById(R.id.toolbar))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
+
+    override fun onStart() {
+        super.onStart()
+
+    }
+
 }

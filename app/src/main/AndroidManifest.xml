@@ -1,10 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="namelessnet.org">
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
+
+    <!-- https://developer.android.com/about/versions/11/privacy/package-visibility -->
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
+
+    <uses-sdk tools:overrideLibrary="com.blacksqxtructurercle.xtructure.editorkit, com.blacksqxtructurercle.xtructure.language.json, com.blacksqxtructurercle.xtructure.language.base" />
 
     <application
         android:name=".App"
         android:allowBackup="true"
+        android:extractNativeLibs="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -13,13 +47,98 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.service.qxtructurecksettings.action.QS_TILE_PREFERENCES" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
+        <activity
+            android:name=".xtructure.ServerActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateUnchanged" />
+        <activity
+            android:name=".xtructure.ServerCustomConfigActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateUnchanged" />
+        <activity
+            android:name=".xtructure.SettingsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".xtructure.PerAppProxyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".xtructure.ScannerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".xtructure.RoutingSettingsActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateUnchanged" />
+        <activity
+            android:name=".xtructure.SubSettingActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".xtructure.SubEditActivity"
+            android:exported="true" />
+        <activity
+            android:name=".xtructure.ScScannerActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".xtructure.ScSwitchActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:process=":RunSoLibV2RayDaemon"
+            android:theme="@style/Theme.NamelessnetR" />
+
+
+        <service
+            android:name=".service.V2RayVpnService"
+            android:enabled="true"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_VPN_SERVICE"
+            android:process=":RunSoLibV2RayDaemon">
+            <intent-filter>
+                <action android:name="android.net.VpnService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.net.VpnService.SUPPORTS_ALWAYS_ON"
+                android:value="true" />
+        </service>
+
+        <service
+            android:name=".service.V2RayProxyOnlyService"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:process=":RunSoLibV2RayDaemon" />
+
+        <service
+            android:name=".service.QSTileService"
+            android:exported="true"
+            android:icon="@drawable/success_shape"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_QxtructureCK_SETTINGS_TILE"
+            android:process=":RunSoLibV2RayDaemon">
+            <intent-filter>
+                <action android:name="android.service.qxtructurecksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+        <!-- =====================Tasker===================== -->
     </application>
 
 </manifest>

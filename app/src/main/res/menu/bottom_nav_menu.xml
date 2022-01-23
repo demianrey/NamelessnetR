@@ -18,7 +18,7 @@
 
     <item
         android:id="@+id/navigation_sector"
-        android:icon="@drawable/ic_round_chart"
+        android:icon="@drawable/ic_round_sector"
         android:title="@string/title_sector" />
 
     <item

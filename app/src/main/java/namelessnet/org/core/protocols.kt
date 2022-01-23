@@ -1,6 +1,6 @@
 package namelessnet.org.core
 
-enum class protocols(val value: Int, val protocalScheme: String) {
+enum class protocols(val value: Int, val protocolScheme: String) {
     VMESS(1, "vmess://"),
     PRIVATE(2, ""),
     SHADOWSOCKS(3, "ss://"),

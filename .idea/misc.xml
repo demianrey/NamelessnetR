@@ -19,14 +19,42 @@
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable/ic_round_setting.xml" value="0.1287162162162162" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable/ic_round_start.xml" value="0.1287162162162162" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/drawable/splash.xml" value="0.1" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_bypass_list.xml" value="0.11824324324324324" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_routing_settings.xml" value="0.11824324324324324" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_server_custom_config.xml" value="0.11824324324324324" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_server_shadowsocks.xml" value="0.11824324324324324" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_server_socks.xml" value="0.11824324324324324" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_server_trojan.xml" value="0.11824324324324324" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_server_vmess.xml" value="0.11824324324324324" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_settings.xml" value="0.11824324324324324" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_sub_edit.xml" value="0.11824324324324324" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_sub_setting.xml" value="0.11824324324324324" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_tasker.xml" value="0.11824324324324324" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/card_layout.xml" value="0.15" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/fragment_home.xml" value="0.14" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/fragment_logs.xml" value="0.1" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/fragment_routing_settings.xml" value="0.11824324324324324" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/fragment_stats.xml" value="0.11824324324324324" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/item_qrcode.xml" value="0.11824324324324324" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/item_recycler_footer.xml" value="0.11824324324324324" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/item_recycler_main.xml" value="0.22" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/item_recycler_sub_setting.xml" value="0.1" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/layout_toolbar.xml" value="0.1" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/nav_view.xml" value="0.11824324324324324" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/sector_fragment.xml" value="0.1" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/settin_fragment.xml" value="0.1" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/widget_switch.xml" value="0.11824324324324324" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/menu/action_server.xml" value="0.11824324324324324" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/menu/action_sub_setting.xml" value="0.11824324324324324" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/menu/bottom_nav_menu.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/menu/menu_bypass_list.xml" value="0.1" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/menu/menu_drawer.xml" value="0.1" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/menu/menu_logcat.xml" value="0.1" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/menu/menu_main.xml" value="0.11824324324324324" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/menu/menu_routing.xml" value="0.1" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/menu/menu_scanner.xml" value="0.1" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/xml/pref_settings.xml" value="0.14" />
       </map>
     </option>
   </component>

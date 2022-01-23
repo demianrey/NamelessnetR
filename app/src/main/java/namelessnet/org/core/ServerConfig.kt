@@ -16,31 +16,34 @@ data class ServerConfig(
 ) {
     companion object {
         fun create(configType: protocols): ServerConfig {
-            when(configType) {
+            when (configType) {
                 protocols.VMESS, protocols.VLESS ->
                     return ServerConfig(
-                            configType = configType,
-                            outboundBean = V2rayConfig.OutboundBean(
-                                    protocol = configType.name.lowercase(),
-                                    settings = V2rayConfig.OutboundBean.OutSettingsBean(
-                                            vnext = listOf(
-                                                V2rayConfig.OutboundBean.OutSettingsBean.VnextBean(
-                                                    users = listOf(V2rayConfig.OutboundBean.OutSettingsBean.VnextBean.UsersBean()))
-                                            )),
-                                    streamSettings = V2rayConfig.OutboundBean.StreamSettingsBean()
-                            )
+                        configType = configType,
+                        outboundBean = V2rayConfig.OutboundBean(
+                            protocol = configType.name.lowercase(),
+                            settings = V2rayConfig.OutboundBean.OutSettingsBean(
+                                vnext = listOf(
+                                    V2rayConfig.OutboundBean.OutSettingsBean.VnextBean(
+                                        users = listOf(V2rayConfig.OutboundBean.OutSettingsBean.VnextBean.UsersBean())
+                                    )
+                                )
+                            ),
+                            streamSettings = V2rayConfig.OutboundBean.StreamSettingsBean()
+                        )
                     )
                 protocols.PRIVATE ->
                     return ServerConfig(configType = configType)
                 protocols.SHADOWSOCKS, protocols.SOCKS, protocols.TROJAN ->
                     return ServerConfig(
-                            configType = configType,
-                            outboundBean = V2rayConfig.OutboundBean(
-                                    protocol = configType.name.lowercase(),
-                                    settings = V2rayConfig.OutboundBean.OutSettingsBean(
-                                            servers = listOf(V2rayConfig.OutboundBean.OutSettingsBean.ServersBean())),
-                                    streamSettings = V2rayConfig.OutboundBean.StreamSettingsBean()
-                            )
+                        configType = configType,
+                        outboundBean = V2rayConfig.OutboundBean(
+                            protocol = configType.name.lowercase(),
+                            settings = V2rayConfig.OutboundBean.OutSettingsBean(
+                                servers = listOf(V2rayConfig.OutboundBean.OutSettingsBean.ServersBean())
+                            ),
+                            streamSettings = V2rayConfig.OutboundBean.StreamSettingsBean()
+                        )
                     )
             }
         }

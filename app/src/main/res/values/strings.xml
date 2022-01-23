@@ -6,6 +6,10 @@
     <string name="title_sector">sector</string>
     <string name="title_settin">settings</string>
 
+    <string name="uplink">Uplink</string>
+    <string name="downlink">Downlink</string>
+    <string name="_0kib" translatable="false">0B</string>
+
     <string name="app_tile_first_use">First use of this feature, please use the app to add server</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

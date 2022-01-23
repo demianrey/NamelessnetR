@@ -167,7 +167,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:orientation="vertical"
-                    android:paddingEnd="5dp">
+                    android:paddingEnd="5dp"
+                    tools:ignore="RtlHardcoded">
 
                     <TextView
                         android:id="@+id/tv_type"

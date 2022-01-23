@@ -26,6 +26,7 @@
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_server_shadowsocks.xml" value="0.11824324324324324" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_server_socks.xml" value="0.11824324324324324" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_server_trojan.xml" value="0.11824324324324324" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_server_vless.xml" value="0.11824324324324324" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_server_vmess.xml" value="0.11824324324324324" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_settings.xml" value="0.11824324324324324" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/activity_sub_edit.xml" value="0.11824324324324324" />
@@ -42,8 +43,9 @@
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/item_recycler_sub_setting.xml" value="0.1" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/layout_toolbar.xml" value="0.1" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/nav_view.xml" value="0.11824324324324324" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/preference_with_help_link.xml" value="0.11824324324324324" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/sector_fragment.xml" value="0.1" />
-        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/settin_fragment.xml" value="0.1" />
+        <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/settin_fragment.xml" value="0.18" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/layout/widget_switch.xml" value="0.11824324324324324" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/menu/action_server.xml" value="0.11824324324324324" />
         <entry key="..\:/Users/mxbhaee/AndroidStudioProjects/Namelessnet/app/src/main/res/menu/action_sub_setting.xml" value="0.11824324324324324" />

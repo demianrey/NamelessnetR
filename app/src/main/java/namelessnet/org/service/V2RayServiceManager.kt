@@ -1,5 +1,6 @@
 package namelessnet.org.service
 
+import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -248,6 +249,7 @@ object V2RayServiceManager {
         }
     }
 
+    @SuppressLint("UnspecifiedImmutableFlag")
     private fun showNotification() {
         val service = serviceControl?.get()?.getService() ?: return
         val startMainIntent = Intent(service, MainActivity::class.java)
@@ -311,7 +313,7 @@ object V2RayServiceManager {
         return channelId
     }
 
-    fun cancelNotification() {
+    private fun cancelNotification() {
         val service = serviceControl?.get()?.getService() ?: return
         service.stopForeground(true)
         mBuilder = null

@@ -17,8 +17,11 @@ data class AngConfig(
         var headerType: String = "",
         var requestHost: String = "",
         var path: String = "",
+        var allowInsecure: String = "",
         var streamSecurity: String = "",
         var configType: Int = 1,
+        var flow: String = "",
+        var sni: String = "",
         var configVersion: Int = 1,
         var testResult: String = "",
         var subid: String = ""

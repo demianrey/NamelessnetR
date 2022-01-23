@@ -217,6 +217,13 @@ class HomeFragment : Fragment() {
             )
             true
         }
+        R.id.import_manually_vless -> {
+            startActivity(
+                Intent().putExtra("creatprotocols", protocols.VLESS.value)
+                    .setClass(mContext, ServerActivity::class.java)
+            )
+            true
+        }
         R.id.import_manually_socks -> {
             startActivity(
                 Intent().putExtra("creatprotocols", protocols.SOCKS.value)

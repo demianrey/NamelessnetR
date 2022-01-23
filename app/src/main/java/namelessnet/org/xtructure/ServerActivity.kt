@@ -128,6 +128,7 @@ class ServerActivity : BaseActivity() {
         } else {
             clearServer()
         }
+        setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 

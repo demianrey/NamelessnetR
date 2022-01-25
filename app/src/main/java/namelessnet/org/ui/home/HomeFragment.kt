@@ -224,6 +224,13 @@ class HomeFragment : Fragment() {
             )
             true
         }
+        R.id.import_manually_trojan -> {
+            startActivity(
+                Intent().putExtra("creatprotocols", protocols.TROJAN.value)
+                    .setClass(mContext, ServerActivity::class.java)
+            )
+            true
+        }
         R.id.import_manually_socks -> {
             startActivity(
                 Intent().putExtra("creatprotocols", protocols.SOCKS.value)
@@ -267,38 +274,52 @@ class HomeFragment : Fragment() {
     /**
      * import config from qrcode
      */
-    fun importQRcode(forConfig: Boolean): Boolean {
-//        try {
-//            startActivityForResult(Intent("com.google.zxing.client.android.SCAN")
-//                    .addCategory(Intent.CATEGORY_DEFAULT)
-//                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP), requestCode)
-//        } catch (e: Exception) {
-        RxPermissions(requireActivity())
-            .request(Manifest.permission.CAMERA)
-            .subscribe {
-                if (it)
-                    if (forConfig)
-                        scanQRCodeForConfig.launch(Intent(mContext, ScannerActivity::class.java))
+    private fun importQRcode(forConfig: Boolean): Boolean {
+        try {
+            startActivityForResult(
+                Intent("com.google.zxing.client.android.SCAN")
+                    .addCategory(Intent.CATEGORY_DEFAULT)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP), 123
+            )
+        } catch (e: Exception) {
+            RxPermissions(requireActivity())
+                .request(Manifest.permission.CAMERA)
+                .subscribe {
+                    if (it)
+                        if (forConfig)
+                            scanQRCodeForConfig.launch(
+                                Intent(
+                                    mContext,
+                                    ScannerActivity::class.java
+                                )
+                            )
+                        else
+                            scanQRCodeForUrlToCustomConfig.launch(
+                                Intent(
+                                    mContext,
+                                    ScannerActivity::class.java
+                                )
+                            )
                     else
-                        scanQRCodeForUrlToCustomConfig.launch(Intent(mContext, ScannerActivity::class.java))
-                else
-                    mContext.toast(R.string.toast_permission_denied)
-            }
-//        }
+                        mContext.toast(R.string.toast_permission_denied)
+                }
+        }
         return true
     }
 
-    private val scanQRCodeForConfig = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        if (it.resultCode == RESULT_OK) {
-            importBatchConfig(it.data?.getStringExtra("SCAN_RESULT"))
+    private val scanQRCodeForConfig =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK) {
+                importBatchConfig(it.data?.getStringExtra("SCAN_RESULT"))
+            }
         }
-    }
 
-    private val scanQRCodeForUrlToCustomConfig = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        if (it.resultCode == RESULT_OK) {
-            importConfigCustomUrl(it.data?.getStringExtra("SCAN_RESULT"))
+    private val scanQRCodeForUrlToCustomConfig =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK) {
+                importConfigCustomUrl(it.data?.getStringExtra("SCAN_RESULT"))
+            }
         }
-    }
 
     /**
      * import config from clipboard
@@ -449,18 +470,24 @@ class HomeFragment : Fragment() {
         intent.addCategory(Intent.CATEGORY_OPENABLE)
 
         try {
-            chooseFileForCustomConfig.launch(Intent.createChooser(intent, getString(R.string.title_file_chooser)))
+            chooseFileForCustomConfig.launch(
+                Intent.createChooser(
+                    intent,
+                    getString(R.string.title_file_chooser)
+                )
+            )
         } catch (ex: android.content.ActivityNotFoundException) {
             mContext.toast(R.string.toast_require_file_manager)
         }
     }
 
-    private val chooseFileForCustomConfig = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        val uri = it.data?.data
-        if (it.resultCode == RESULT_OK && uri != null) {
-            readContentFromUri(uri)
+    private val chooseFileForCustomConfig =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            val uri = it.data?.data
+            if (it.resultCode == RESULT_OK && uri != null) {
+                readContentFromUri(uri)
+            }
         }
-    }
 
     /**
      * read content from uri
@@ -495,7 +522,11 @@ class HomeFragment : Fragment() {
             mContext.toast(R.string.toast_success)
             adapter.notifyItemInserted(mainViewModel.serverList.lastIndex)
         } catch (e: Exception) {
-            ToastCompat.makeText(mContext, "${getString(R.string.toast_malformed_josn)} ${e.cause?.message}", Toast.LENGTH_LONG).show()
+            ToastCompat.makeText(
+                mContext,
+                "${getString(R.string.toast_malformed_josn)} ${e.cause?.message}",
+                Toast.LENGTH_LONG
+            ).show()
             e.printStackTrace()
             return
         }

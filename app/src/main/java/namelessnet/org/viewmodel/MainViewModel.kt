@@ -91,7 +91,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         mainStorage?.encode(KEY_ANG_CONFIGS, Gson().toJson(serverList))
     }
 
-    fun updateCache() {
+    private fun updateCache() {
         serversCache.clear()
         GlobalScope.launch(Dispatchers.Default) {
             serverList.forEach { guid ->
@@ -127,6 +127,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    @DelicateCoroutinesApi
     fun testCurrentServerRealPing() {
         val socksPort =
             10808//Utils.parseInt(defaultDPreference.getPrefString(SettingsActivity.PREF_SOCKS_PORT, "10808"))

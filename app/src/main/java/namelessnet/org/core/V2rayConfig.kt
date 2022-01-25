@@ -208,7 +208,7 @@ data class V2rayConfig(
             )
 
             data class TlsSettingsBean(
-                var allowInsecure: Boolean? = false,
+                var allowInsecure: Boolean? = null,
                 var serverName: String = "",
                 val alpn: List<String>? = null,
                 val minVersion: String? = null,
@@ -360,14 +360,6 @@ data class V2rayConfig(
             } else if (protocol.equals(protocols.SOCKS.name, true)) {
                 return settings?.servers?.get(0)?.users?.get(0)?.pass
             }
-            return null
-        }
-
-        fun allowinsecure() : String? {
-
-
-
-            //adding the allow insecure
             return null
         }
 

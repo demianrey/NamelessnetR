@@ -88,7 +88,7 @@ object AngConfigManager {
             Constants.PREF_SPEED_ENABLED,
             Constants.PREF_PROXY_SHARING,
             Constants.PREF_LOCAL_DNS_ENABLED,
-//                Constants.PREF_ALLOW_INSECURE,
+            Constants.PREF_ALLOW_INSECURE,
 //                Constants.PREF_PREFER_IPV6,
             Constants.PREF_PER_APP_PROXY,
             Constants.PREF_BYPASS_APPS,
@@ -130,7 +130,7 @@ object AngConfigManager {
                         vnext.users[0].security = vmessBean.security
                     } else if (config.configType == protocols.VLESS) {
                         vnext.users[0].encryption = vmessBean.security
-//                        vnext.users[0].flow = vmessBean.flow
+                        vnext.users[0].flow = vmessBean.flow
                     }
                 }
                 config.outboundBean?.settings?.servers?.get(0)?.let { server ->
@@ -165,15 +165,14 @@ object AngConfigManager {
                         vmessBean.headerType,
                         vmessBean.path
                     )
-//                    val allowInsecure = if (vmessBean.allowInsecure.isBlank()) {
-//                        settingsStorage?.decodeBool(Constants.PREF_ALLOW_INSECURE) ?: false
-//                    } else {
-//                        vmessBean.allowInsecure.toBoolean()
-//                    }
+                    val allowInsecure = if (vmessBean.allowInsecure.isBlank()) {
+                        settingsStorage?.decodeBool(Constants.PREF_ALLOW_INSECURE) ?: false
+                    } else {
+                        vmessBean.allowInsecure.toBoolean()
+                    }
                     streamSetting.populateTlsSettings(
-                        vmessBean.streamSecurity, false,
-                        sni
-                    )//vmessBean.sni.ifBlank { sni })
+                        vmessBean.streamSecurity, allowInsecure,
+                        vmessBean.sni.ifBlank { sni })
                 }
             }
             val key = MmkvManager.encodeServerConfig(vmessBean.guid, config)
@@ -213,8 +212,8 @@ object AngConfigManager {
             }
 
             var config: ServerConfig? = null
-            val allowInsecure =
-                false//settingsStorage?.decodeBool(Constants.PREF_ALLOW_INSECURE) ?: false
+           val allowInsecure = settingsStorage?.decodeBool(Constants.PREF_ALLOW_INSECURE) ?: true
+
             if (str.startsWith(protocols.VMESS.protocolScheme)) {
                 config = ServerConfig.create(protocols.VMESS)
                 val streamSetting = config.outboundBean?.streamSettings ?: return -1

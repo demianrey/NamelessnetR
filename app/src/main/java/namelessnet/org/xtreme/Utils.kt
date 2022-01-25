@@ -31,8 +31,18 @@ import kotlin.coroutines.coroutineContext
 
 object Utils {
 
-    private val mainStorage by lazy { MMKV.mmkvWithID(MmkvManager.ID_MAIN, MMKV.MULTI_PROCESS_MODE) }
-    private val settingsStorage by lazy { MMKV.mmkvWithID(MmkvManager.ID_SETTING, MMKV.MULTI_PROCESS_MODE) }
+    private val mainStorage by lazy {
+        MMKV.mmkvWithID(
+            MmkvManager.ID_MAIN,
+            MMKV.MULTI_PROCESS_MODE
+        )
+    }
+    private val settingsStorage by lazy {
+        MMKV.mmkvWithID(
+            MmkvManager.ID_SETTING,
+            MMKV.MULTI_PROCESS_MODE
+        )
+    }
     private val tcpTestingSockets = ArrayList<Socket?>()
 
     /**
@@ -100,6 +110,7 @@ object Utils {
         FancyToast.makeText(context, message, FancyToast.LENGTH_SHORT, FancyToast.ERROR, false)
             .show()
     }
+
     /**
      * get text from clipboard
      */
@@ -145,7 +156,8 @@ object Utils {
             Log.i(Constants.ANG_PACKAGE, "Parse base64 standard failed $e")
         }
         try {
-            return Base64.decode(text, Base64.NO_WRAP.or(Base64.URL_SAFE)).toString(charset("UTF-8"))
+            return Base64.decode(text, Base64.NO_WRAP.or(Base64.URL_SAFE))
+                .toString(charset("UTF-8"))
         } catch (e: Exception) {
             Log.i(Constants.ANG_PACKAGE, "Parse base64 url safe failed $e")
         }
@@ -168,7 +180,8 @@ object Utils {
      * get remote dns servers from preference
      */
     fun getRemoteDnsServers(): List<String> {
-        val remoteDns = settingsStorage?.decodeString(Constants.PREF_REMOTE_DNS) ?: Constants.DNS_AGENT
+        val remoteDns =
+            settingsStorage?.decodeString(Constants.PREF_REMOTE_DNS) ?: Constants.DNS_AGENT
         val ret = remoteDns.split(",").filter { isPureIpAddress(it) || isCoreDNSAddress(it) }
         if (ret.isEmpty()) {
             return listOf(Constants.DNS_AGENT)
@@ -178,8 +191,8 @@ object Utils {
 
     fun getVpnDnsServers(): List<String> {
         val vpnDns = settingsStorage?.decodeString(Constants.PREF_VPN_DNS)
-                ?: settingsStorage?.decodeString(Constants.PREF_REMOTE_DNS)
-                ?: Constants.DNS_AGENT
+            ?: settingsStorage?.decodeString(Constants.PREF_REMOTE_DNS)
+            ?: Constants.DNS_AGENT
         return vpnDns.split(",").filter { isPureIpAddress(it) }
         // allow empty, in that case dns will use system default
     }
@@ -188,7 +201,8 @@ object Utils {
      * get remote dns servers from preference
      */
     fun getDomesticDnsServers(): List<String> {
-        val domesticDns = settingsStorage?.decodeString(Constants.PREF_DOMESTIC_DNS) ?: Constants.DNS_DIRECT
+        val domesticDns =
+            settingsStorage?.decodeString(Constants.PREF_DOMESTIC_DNS) ?: Constants.DNS_DIRECT
         val ret = domesticDns.split(",").filter { isPureIpAddress(it) || isCoreDNSAddress(it) }
         if (ret.isEmpty()) {
             return listOf(Constants.DNS_DIRECT)
@@ -203,8 +217,10 @@ object Utils {
         try {
             val hints = HashMap<EncodeHintType, String>()
             hints[EncodeHintType.CHARACTER_SET] = "utf-8"
-            val bitMatrix = QRCodeWriter().encode(text,
-                    BarcodeFormat.QR_CODE, size, size, hints)
+            val bitMatrix = QRCodeWriter().encode(
+                text,
+                BarcodeFormat.QR_CODE, size, size, hints
+            )
             val pixels = IntArray(size * size)
             for (y in 0 until size) {
                 for (x in 0 until size) {
@@ -216,8 +232,10 @@ object Utils {
 
                 }
             }
-            val bitmap = Bitmap.createBitmap(size, size,
-                    Bitmap.Config.ARGB_8888)
+            val bitmap = Bitmap.createBitmap(
+                size, size,
+                Bitmap.Config.ARGB_8888
+            )
             bitmap.setPixels(pixels, 0, size, 0, 0, size, size)
             return bitmap
         } catch (e: WriterException) {
@@ -254,7 +272,7 @@ object Utils {
             // addr = addr.toLowerCase()
             val octets = addr.split('.').toTypedArray()
             if (octets.size == 4) {
-                if(octets[3].indexOf(":") > 0) {
+                if (octets[3].indexOf(":") > 0) {
                     addr = addr.substring(0, addr.indexOf(":"))
                 }
                 return isIpv4Address(addr)
@@ -273,7 +291,8 @@ object Utils {
     }
 
     fun isIpv4Address(value: String): Boolean {
-        val regV4 = Regex("^([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$")
+        val regV4 =
+            Regex("^([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$")
         return regV4.matches(value)
     }
 
@@ -283,7 +302,8 @@ object Utils {
             addr = addr.drop(1)
             addr = addr.dropLast(addr.count() - addr.lastIndexOf("]"))
         }
-        val regV6 = Regex("^((?:[0-9A-Fa-f]{1,4}))?((?::[0-9A-Fa-f]{1,4}))*::((?:[0-9A-Fa-f]{1,4}))?((?::[0-9A-Fa-f]{1,4}))*|((?:[0-9A-Fa-f]{1,4}))((?::[0-9A-Fa-f]{1,4})){7}$")
+        val regV6 =
+            Regex("^((?:[0-9A-Fa-f]{1,4}))?((?::[0-9A-Fa-f]{1,4}))*::((?:[0-9A-Fa-f]{1,4}))?((?::[0-9A-Fa-f]{1,4}))*|((?:[0-9A-Fa-f]{1,4}))((?::[0-9A-Fa-f]{1,4})){7}$")
         return regV6.matches(addr)
     }
 
@@ -296,7 +316,10 @@ object Utils {
      */
     fun isValidUrl(value: String?): Boolean {
         try {
-            if (value != null && Patterns.WEB_URL.matcher(value).matches() || URLUtil.isValidUrl(value)) {
+            if (value != null && Patterns.WEB_URL.matcher(value).matches() || URLUtil.isValidUrl(
+                    value
+                )
+            ) {
                 return true
             }
         } catch (e: WriterException) {
@@ -363,13 +386,18 @@ object Utils {
         var conn: HttpURLConnection? = null
 
         try {
-            val url = URL("https",
-                    "www.google.com",
-                    "/generate_204")
+            val url = URL(
+                "https",
+                "www.google.com",
+                "/generate_204"
+            )
 
             conn = url.openConnection(
-                Proxy(Proxy.Type.HTTP,
-                InetSocketAddress("127.0.0.1", port + 1))) as HttpURLConnection
+                Proxy(
+                    Proxy.Type.HTTP,
+                    InetSocketAddress("127.0.0.1", port + 1)
+                )
+            ) as HttpURLConnection
             conn.connectTimeout = 30000
             conn.readTimeout = 30000
             conn.setRequestProperty("Connection", "close")
@@ -383,15 +411,23 @@ object Utils {
             if (code == 204 || code == 200 && conn.responseLength == 0L) {
                 result = context.getString(R.string.connection_test_available, elapsed)
             } else {
-                throw IOException(context.getString(R.string.connection_test_error_status_code, code))
+                throw IOException(
+                    context.getString(
+                        R.string.connection_test_error_status_code,
+                        code
+                    )
+                )
             }
         } catch (e: IOException) {
             // network exception
-            Log.d(Constants.ANG_PACKAGE,"testConnection IOException: "+Log.getStackTraceString(e))
+            Log.d(
+                Constants.ANG_PACKAGE,
+                "testConnection IOException: " + Log.getStackTraceString(e)
+            )
             result = context.getString(R.string.connection_test_error, e.message)
         } catch (e: Exception) {
             // library exception, eg sumsung
-            Log.d(Constants.ANG_PACKAGE,"testConnection Exception: "+Log.getStackTraceString(e))
+            Log.d(Constants.ANG_PACKAGE, "testConnection Exception: " + Log.getStackTraceString(e))
             result = context.getString(R.string.connection_test_error, e.message)
         } finally {
             conn?.disconnect()
@@ -431,7 +467,8 @@ object Utils {
             val allText = process.inputStream.bufferedReader().use { it.readText() }
             if (allText.isNotBlank()) {
                 val tempInfo = allText.substring(allText.indexOf("min/avg/max/mdev") + 19)
-                val temps = tempInfo.split("/".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+                val temps =
+                    tempInfo.split("/".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
                 if (temps.count() > 0 && temps[0].length < 10) {
                     return temps[0].toFloat().toInt().toString() + "ms"
                 }
@@ -499,8 +536,10 @@ object Utils {
         conn.setRequestProperty("Connection", "close")
         conn.setRequestProperty("User-agent", "NamelessnetR/${BuildConfig.VERSION_NAME}")
         url.userInfo?.let {
-            conn.setRequestProperty("Authorization",
-                "Basic ${encode(urlDecode(it))}")
+            conn.setRequestProperty(
+                "Authorization",
+                "Basic ${encode(urlDecode(it))}"
+            )
         }
         conn.useCaches = false
         return conn.inputStream.use {

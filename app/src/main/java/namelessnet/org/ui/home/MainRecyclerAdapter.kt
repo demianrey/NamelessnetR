@@ -1,5 +1,6 @@
 package namelessnet.org.ui.home
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import androidx.core.content.ContextCompat
@@ -50,6 +51,7 @@ class MainRecyclerAdapter(val activity: HomeFragment) :
 
     override fun getItemCount() = mActivity.mainViewModel.serverList.size + 1
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         if (holder is MainViewHolder) {
             val guid = mActivity.mainViewModel.serverList.getOrNull(position) ?: return
@@ -60,8 +62,15 @@ class MainRecyclerAdapter(val activity: HomeFragment) :
             val aff = MmkvManager.decodeServerAffiliationInfo(guid)
 
             holder.itemMainBinding.tvName.text = config.remarks
-            holder.itemMainBinding.btnRadio.isChecked =
-                guid == mainStorage?.decodeString(MmkvManager.KEY_SELECTED_SERVER)
+            if (holder.itemMainBinding.btnRadio.isSelected == (guid == mainStorage?.decodeString(
+                    MmkvManager.KEY_SELECTED_SERVER
+                ))
+            ) {
+               holder.itemMainBinding.btnRadio.visibility = View.INVISIBLE
+            } else {
+                holder.itemMainBinding.btnRadio.visibility = View.VISIBLE
+                holder.itemMainBinding.btnRadio.setCardBackgroundColor(Color.parseColor("#600080"))
+            }
             holder.itemView.setBackgroundColor(Color.TRANSPARENT)
             holder.itemMainBinding.tvTestResult.text = aff?.getTestDelayString() ?: ""
             if (aff?.testDelayMillis ?: 0L < 0L) {
@@ -89,19 +98,25 @@ class MainRecyclerAdapter(val activity: HomeFragment) :
             var shareOptions = share_method.asList()
             when (config.configType) {
                 protocols.PRIVATE -> {
-                    holder.itemMainBinding.tvType.text =
-                        mActivity.getString(R.string.server_customize_config)
+                    holder.itemMainBinding.tvStatistics.text = "PRIVATE"
                     shareOptions = shareOptions.takeLast(1)
                 }
                 protocols.VLESS -> {
-                    holder.itemMainBinding.tvType.text = config.configType.name
+                    holder.itemMainBinding.tvStatistics.text = config.configType.name.uppercase()
+                }
+                protocols.TROJAN -> {
+                    holder.itemMainBinding.tvStatistics.text = config.configType.name.uppercase()
+                }
+                protocols.SOCKS -> {
+                    holder.itemMainBinding.tvStatistics.text = config.configType.name.uppercase()
+                }
+                protocols.SHADOWSOCKS -> {
+                    holder.itemMainBinding.tvStatistics.text = config.configType.name.uppercase()
                 }
                 else -> {
-                    holder.itemMainBinding.tvType.text = config.configType.name.lowercase()
+                    holder.itemMainBinding.tvStatistics.text = config.configType.name.uppercase()
                 }
             }
-            holder.itemMainBinding.tvStatistics.text =
-                "${outbound?.getServerAddress()} : ${outbound?.getServerPort()}"
 
             holder.itemMainBinding.layoutShare.setOnClickListener {
                 AlertDialog.Builder(mActivity.requireContext())
@@ -177,20 +192,19 @@ class MainRecyclerAdapter(val activity: HomeFragment) :
                     notifyItemChanged(mActivity.mainViewModel.serverList.indexOf(selected))
                     notifyItemChanged(mActivity.mainViewModel.serverList.indexOf(guid))
                     if (isRunning) {
-                       // mActivity.showCircle()
+                        mActivity.showCircle()
                         Utils.stopVService(mActivity.requireContext())
                         Observable.timer(500, TimeUnit.MILLISECONDS)
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe {
                                 V2RayServiceManager.startV2Ray(mActivity.requireContext())
-                       //         mActivity.hideCircle()
+                                mActivity.hideCircle()
                             }
                     }
                 }
             }
         }
         if (holder is FooterViewHolder) {
-            //if (activity?.defaultDPreference?.getPrefBoolean(Constants.PREF_INAPP_BUY_IS_PREMIUM, false)) {
             if (true) {
                 holder.itemFooterBinding.layoutEdit.visibility = View.INVISIBLE
             } else {
@@ -243,7 +257,7 @@ class MainRecyclerAdapter(val activity: HomeFragment) :
 
     open class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun onItemSelected() {
-            itemView.setBackgroundColor(Color.LTGRAY)
+            itemView.setBackgroundColor(Color.BLACK)
         }
 
         fun onItemClear() {
@@ -256,32 +270,4 @@ class MainRecyclerAdapter(val activity: HomeFragment) :
 
     class FooterViewHolder(val itemFooterBinding: ItemRecyclerFooterBinding) :
         BaseViewHolder(itemFooterBinding.root)
-
-    fun onItemDismiss(position: Int) {
-        val guid = mActivity.mainViewModel.serverList.getOrNull(position) ?: return
-        if (guid != mainStorage?.decodeString(MmkvManager.KEY_SELECTED_SERVER)) {
-//            mActivity.alert(R.string.del_config_comfirm) {
-//                positiveButton(android.R.string.ok) {
-            mActivity.mainViewModel.removeServer(guid)
-            notifyItemRemoved(position)
-//                }
-//                show()
-//            }
-        }
-    }
-
-    fun onItemMove(fromPosition: Int, toPosition: Int): Boolean {
-        mActivity.mainViewModel.swapServer(fromPosition, toPosition)
-        notifyItemMoved(fromPosition, toPosition)
-        // position is changed, since position is used by click callbacks, need to update range
-        if (toPosition > fromPosition)
-            notifyItemRangeChanged(fromPosition, toPosition - fromPosition + 1)
-        else
-            notifyItemRangeChanged(toPosition, fromPosition - toPosition + 1)
-        return true
-    }
-
-    fun onItemMoveCompleted() {
-        // do nothing
-    }
 }
